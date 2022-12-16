@@ -20,6 +20,9 @@ builder.Services.AddDbContext<AppDBContext>(options => options.UseSqlServer(
 //Inject Repo Pattern
 builder.Services.AddScoped<IStudentRepository, SqlStudentRepository>();
 
+//Inject AutoMapper
+builder.Services.AddAutoMapper(typeof(Program));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

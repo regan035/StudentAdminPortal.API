@@ -1,4 +1,4 @@
-﻿using StudentAdminPortal.API.DataModels;
+﻿using StudentAdminPortal.API.Models;
 
 namespace StudentAdminPortal.API.Repositories
 {

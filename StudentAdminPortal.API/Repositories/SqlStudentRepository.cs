@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StudentAdminPortal.API.Data;
-using StudentAdminPortal.API.DataModels;
+using StudentAdminPortal.API.Models;
 
 namespace StudentAdminPortal.API.Repositories
 {
