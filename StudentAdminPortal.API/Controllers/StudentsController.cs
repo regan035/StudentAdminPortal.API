@@ -20,9 +20,9 @@ namespace StudentAdminPortal.API.Controllers
 
         [HttpGet]
         [Route("[controller]")]
-        public IActionResult GetAllStudents()
+        public async Task <IActionResult> GetAllStudents()
         {
-            var students = studentRepository.GetStudents();
+            var students =await studentRepository.GetStudentsAsync();
             
 
             //var domainModelStudents = new List<Student>();
