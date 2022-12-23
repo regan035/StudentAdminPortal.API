@@ -4,6 +4,18 @@ using StudentAdminPortal.API.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add Cors policy to frontend
+builder.Services.AddCors((options) =>
+{
+    options.AddPolicy("ngUI", (builder) =>
+    {
+        builder.WithOrigins("*")
+        .AllowAnyHeader()
+        .WithMethods("GET","POST","PUT","DELETE")
+        .WithExposedHeaders("*");
+});
+});
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -33,6 +45,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.UseCors("ngUI");
 
 app.UseAuthorization();
 
