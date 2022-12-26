@@ -18,40 +18,31 @@ namespace StudentAdminPortal.API.Controllers
             this.mapper = mapper;
         }
 
+        //Get all student records
         [HttpGet]
         [Route("[controller]")]
-        public IActionResult GetAllStudents()
+        public async Task<IActionResult> GetAllStudentsAsync()
         {
-            var students = studentRepository.GetStudents();
-            
+            var students = await studentRepository.GetStudentsAsync();
 
-            //var domainModelStudents = new List<Student>();
-            //foreach (var student in students)
-            //{
-            //    domainModelStudents.Add(new Student()
-            //    {
-            //        Id= student.Id,
-            //        FirstName= student.FirstName,
-            //        LastName= student.LastName,
-            //        DateOfBirth= student.DateOfBirth,
-            //        Email= student.Email,
-            //        Mobile= student.Mobile,
-            //        ProfileImageUrl= student.ProfileImageUrl,
-            //        GenderId= student.GenderId,
-            //        Address = new Address()
-            //        {
-            //            Id= student.Address.Id,
-            //            PhysicalAddress= student.Address.PhysicalAddress,
-            //            PostalAddress= student.Address.PostalAddress,
-            //        },
-            //        Gender = new Gender()
-            //        {
-            //            Id= student.Gender.Id,
-            //            Description= student.Gender.Description,
-            //        }
-            //    });
-            //}
             return Ok(mapper.Map<List<Student>>(students));
         }
+
+        //Get a single student record by ID
+        [HttpGet]
+        [Route("[controller]/{studentId:guid}"), ActionName("GetStudentAsync")]
+        public async Task<IActionResult> GetStudentAsync([FromRoute] Guid studentId)
+        {
+            //Fetch student details
+            var student = await studentRepository.GetStudentAsync(studentId);
+
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(mapper.Map<Student>(student));
+        }
+      
     }
 }

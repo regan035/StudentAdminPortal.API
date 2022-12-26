@@ -9,7 +9,7 @@ builder.Services.AddCors((options) =>
 {
     options.AddPolicy("ngUI", (builder) =>
     {
-        builder.WithOrigins("*")
+        builder.WithOrigins("http://localhost:4200")
         .AllowAnyHeader()
         .WithMethods("GET","POST","PUT","DELETE")
         .WithExposedHeaders("*");
