@@ -9,5 +9,7 @@ namespace StudentAdminPortal.API.Repositories
 
         //return one single student
         Task<Student> GetStudentAsync(Guid studentId);
+
+        Task<List<Gender>>GetGendersAsync();
     }
 }
