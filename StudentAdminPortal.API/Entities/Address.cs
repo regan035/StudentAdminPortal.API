@@ -8,5 +8,10 @@
 
         //Navigation Property
         public Guid StudentId { get; set; }
+
+        public static implicit operator Address(Models.Address v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
