@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Azure.Core;
+using Microsoft.EntityFrameworkCore;
 using StudentAdminPortal.API.Data;
 using StudentAdminPortal.API.Models;
 
@@ -55,7 +56,21 @@ namespace StudentAdminPortal.API.Repositories
                 existingStudent.Address.PhysicalAddress = request.Address.PhysicalAddress;
                 existingStudent.Address.PostalAddress = request.Address.PostalAddress;
 
-                context.SaveChangesAsync();
+                await context.SaveChangesAsync();
+                return existingStudent;
+            }
+
+            return null;
+        }
+
+        public async Task<Student> DeleteStudent(Guid studentId)
+        {
+            var existingStudent = await GetStudentAsync(studentId);
+            if (existingStudent != null)
+            {
+                context.Student.Remove(existingStudent);
+
+                await context.SaveChangesAsync();
                 return existingStudent;
             }
 
