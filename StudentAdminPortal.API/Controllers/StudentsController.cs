@@ -78,6 +78,17 @@ namespace StudentAdminPortal.API.Controllers
             }
             return NotFound();
         }
+
+        //create student
+        [HttpPost]
+        [Route("[controller]/create")]
+        public async Task<IActionResult> CreateStudetnAsync([FromBody] CreateStudentRequest request)
+        {
+            var student = await studentRepository.CreateStudent(mapper.Map<Models.Student>(request));
+            return CreatedAtAction(nameof(GetStudentAsync), 
+                new {studentId = student.Id},
+                mapper.Map<Student>(student));
+        }
       
     }
 }

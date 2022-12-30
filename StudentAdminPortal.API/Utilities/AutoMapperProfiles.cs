@@ -9,11 +9,17 @@ namespace StudentAdminPortal.API.Utilities
     {
         public AutoMapperProfiles()
         {
-            CreateMap<Models.Student,Entities.Student>();
-            CreateMap<Models.Gender, Entities.Gender>();
-            CreateMap<Models.Address, Entities.Address>();
+            CreateMap<Models.Student,Entities.Student>().ReverseMap();
+
+            CreateMap<Models.Gender, Gender>().ReverseMap();
+
+            CreateMap<Models.Address, Entities.Address>().ReverseMap();
+
             CreateMap<UpdateStudentRequest, Models.Student>()
                 .AfterMap<UpdateStudentRequestAfterMap>();
+
+            CreateMap<CreateStudentRequest, Models.Student>()
+                .AfterMap<CreateStudentRequestAfterMap>();
 
 
         }

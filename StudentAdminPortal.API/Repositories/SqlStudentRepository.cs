@@ -76,5 +76,12 @@ namespace StudentAdminPortal.API.Repositories
 
             return null;
         }
+
+        public async Task<Student> CreateStudent(Student request)
+        {
+            var newStudent = await context.Student.AddAsync(request);
+            await context.SaveChangesAsync();
+            return newStudent.Entity;
+        }
     }
 }
