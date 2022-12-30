@@ -18,8 +18,8 @@ namespace StudentAdminPortal.API.Utilities
             CreateMap<UpdateStudentRequest, Models.Student>()
                 .AfterMap<UpdateStudentRequestAfterMap>();
 
-            CreateMap<CreateStudentRequest, Models.Student>()
-                .AfterMap<CreateStudentRequestAfterMap>();
+            CreateMap<AddStudentRequest, Models.Student>()
+                .AfterMap<AddStudentRequestAfterMap>();
 
 
         }

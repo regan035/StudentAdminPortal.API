@@ -5,9 +5,9 @@ using DataModels = StudentAdminPortal.API.Models;
 
 namespace StudentAdminPortal.API.Utilities.AfterMaps
 {
-    public class CreateStudentRequestAfterMap : IMappingAction<CreateStudentRequest, Models.Student>
+    public class AddStudentRequestAfterMap : IMappingAction<AddStudentRequest, Models.Student>
     {
-        public void Process(CreateStudentRequest source, DataModels.Student destination, ResolutionContext context)
+        public void Process(AddStudentRequest source, DataModels.Student destination, ResolutionContext context)
         {
             destination.Id = Guid.NewGuid();
             destination.Address = new DataModels.Address()

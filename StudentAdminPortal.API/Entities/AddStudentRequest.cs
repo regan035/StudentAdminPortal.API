@@ -1,6 +1,6 @@
 ﻿namespace StudentAdminPortal.API.Entities
 {
-    public class CreateStudentRequest
+    public class AddStudentRequest
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
