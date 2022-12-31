@@ -32,6 +32,9 @@ builder.Services.AddDbContext<AppDBContext>(options => options.UseSqlServer(
 //Inject Repo Pattern
 builder.Services.AddScoped<IStudentRepository, SqlStudentRepository>();
 
+//Inject image repository
+builder.Services.AddScoped<IImageRepository, LocalStorageImageRepository>();
+
 //Inject AutoMapper
 builder.Services.AddAutoMapper(typeof(Program));
 
