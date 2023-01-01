@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using StudentAdminPortal.API.Data;
 using StudentAdminPortal.API.Repositories;
 
@@ -45,6 +46,13 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+//Set local storage resource folder to static 
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.ContentRootPath,"Resources")),
+    RequestPath = "/Resources"
+});
 
 app.UseRouting();
 
