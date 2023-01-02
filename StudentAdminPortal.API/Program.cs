@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using StudentAdminPortal.API.Data;
 using StudentAdminPortal.API.Repositories;
 
@@ -48,6 +49,13 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+//Set local storage to static so UI can render images from Resources folder
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.ContentRootPath,"Resources")),
+    RequestPath = "/Resources"
+});
 
 app.UseRouting();
 
