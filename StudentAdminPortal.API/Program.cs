@@ -30,7 +30,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDBContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")));
 
-//Inject Repo Pattern
+//Inject Repo Pattern to controllers
 builder.Services.AddScoped<IStudentRepository, SqlStudentRepository>();
 
 //Inject image repository

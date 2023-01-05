@@ -7,6 +7,7 @@ namespace StudentAdminPortal.API.Repositories
 {
     public class SqlStudentRepository : IStudentRepository
     {
+        //Inject dbContext to talk to database
         private readonly AppDBContext context;
 
         public SqlStudentRepository(AppDBContext context)

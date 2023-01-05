@@ -14,3 +14,6 @@ namespace StudentAdminPortal.API.Data
 
     }
 }
+
+
+//DBContext represents a session with the database and can be used to quary and save instances of the entities.
