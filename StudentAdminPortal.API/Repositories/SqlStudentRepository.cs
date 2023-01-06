@@ -22,6 +22,7 @@ namespace StudentAdminPortal.API.Repositories
                 .Include(nameof(Gender))
                 .Include(nameof(Address))
                 .ToListAsync();
+            //.Include() taking navigation properties Gender and Adress
         }
 
 
