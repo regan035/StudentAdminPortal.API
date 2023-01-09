@@ -37,7 +37,7 @@ namespace StudentAdminPortal.API.Controllers
         [Route("[controller]/{studentId:guid}"), ActionName("GetStudentAsync")]
         public async Task<IActionResult> GetStudentAsync([FromRoute] Guid studentId)
         {
-            //Fetch student details
+            //Fetch student details, pass studentId to the repository
             var student = await studentRepository.GetStudentAsync(studentId);
 
             if (student == null)
