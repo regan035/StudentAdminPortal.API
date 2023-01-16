@@ -89,6 +89,8 @@ namespace StudentAdminPortal.API.Controllers
         public async Task<IActionResult> AddStudentAsync([FromBody] AddStudentRequest request)
         {
             var student = await studentRepository.AddStudent(mapper.Map<Models.Student>(request));
+
+            //return an action name back to  line37 to fetch the student record after creation
             return CreatedAtAction(nameof(GetStudentAsync), 
                 new {studentId = student.Id},
                 mapper.Map<Student>(student));

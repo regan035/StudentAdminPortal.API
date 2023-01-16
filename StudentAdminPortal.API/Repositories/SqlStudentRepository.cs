@@ -73,6 +73,8 @@ namespace StudentAdminPortal.API.Repositories
                 context.Student.Remove(existingStudent);
 
                 await context.SaveChangesAsync();
+
+                //return to display in client 
                 return existingStudent;
             }
 
